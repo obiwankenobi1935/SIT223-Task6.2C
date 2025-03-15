@@ -21,7 +21,7 @@ pipeline {
                         echo 'Running tests...'
 
                         // Simulate test execution
-                        sh 'echo "Running tests..."'
+                        powershell 'echo "Running tests..."'
 
                         echo 'Tests passed successfully.'
                         
