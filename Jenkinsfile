@@ -4,7 +4,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building the application...'
+                echo 'This stage compiles and packages the application using a build automation tool like Maven or Gradle.'
+                echo 'For Java projects, Maven (mvn clean package) can be used.'
+                echo 'For JavaScript projects, npm or yarn can handle the build process.'
             }
         }
 
@@ -38,35 +40,40 @@ pipeline {
             }
         }
 
-        stage('Security Scan') {
+        stage('Code Analysis') {
             steps {
-                script {
-                    try {
-                        echo 'Running security scan...'
-                        powershell 'echo "Security scan results..." | Out-File -FilePath security_scan_log.txt'
-                        
-                        echo 'Security scan completed successfully.'
-                        
-                        // Send email on success with logs
-                        emailext subject: "Jenkins Pipeline: Security Scan Passed",
-                            body: "Security scan completed successfully.",
-                            to: "kavishchoudhary1935@gmail.com",
-                            attachmentsPattern: "security_scan_log.txt"
-                    } catch (Exception e) {
-                        echo 'Security scan failed! Sending failure email...'
-                        powershell 'echo "Security scan failed!" | Out-File -FilePath security_scan_log.txt'
-                        
-                        // Send email on failure with logs
-                        emailext subject: "Jenkins Pipeline: Security Scan Failed",
-                            body: "Security scan encountered issues. Please check the logs.",
-                            to: "kavishchoudhary1935@gmail.com",
-                            attachmentsPattern: "security_scan_log.txt"
-                        
-                        error "Failing the build due to security scan failure."
-                    }
-                }
+                echo 'This stage integrates a code analysis tool to check code quality and industry standards.'
+                echo 'SonarQube or Checkstyle can be used for static code analysis.'
             }
         }
+
+        stage('Security Scan') {
+            steps {
+                echo 'This stage performs a security scan to identify vulnerabilities in the code or dependencies.'
+                echo 'OWASP Dependency-Check or Snyk can be used for scanning security issues.'
+            }
+        }
+
+        stage('Deploy to Staging') {
+            steps {
+                echo 'This stage deploys the application to a staging environment, such as an AWS EC2 instance.'
+                echo 'Deployment tools like SCP, Ansible, or Docker can be used.'
+            }
+        }
+
+        stage('Integration Tests on Staging') {
+            steps {
+                echo 'This stage executes integration tests in a staging environment to simulate production conditions.'
+                echo 'API testing tools like Postman or cURL can be used to verify functionality.'
+            }
+        }
+
+        stage('Deploy to Production') {
+            steps {
+                echo 'This stage deploys the final, tested application to a production environment, such as an AWS EC2 instance.'
+                echo 'Deployment strategies may include blue-green deployment or rolling updates.'
+            }
+        }    
     }
 
     post {
