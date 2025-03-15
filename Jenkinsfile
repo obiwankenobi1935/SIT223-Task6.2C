@@ -12,10 +12,33 @@ pipeline {
 
         stage('Unit and Integration Tests') {
             steps {
-                echo 'This stage runs unit and integration tests to verify code correctness.'
-                echo 'JUnit or TestNG is commonly used for Java applications.'
-                echo 'Jest or Mocha can be used for JavaScript-based projects.'
-                echo 'testing testing'
+                script {
+                    try {
+                        echo 'This stage runs unit and integration tests to verify code correctness.'
+                        echo 'JUnit or TestNG is commonly used for Java applications.'
+                        echo 'Jest or Mocha can be used for JavaScript-based projects.'
+                        echo 'Running tests...'
+
+                        // Simulate test execution
+                        sh 'echo "Running tests..."'
+
+                        echo 'Tests passed successfully.'
+                        
+                        // Send email on success
+                        emailext subject: "Jenkins Pipeline: Tests Passed",
+                            body: "All unit and integration tests passed successfully.",
+                            recipientProviders: [[$class: 'DevelopersRecipientProvider']]
+                    } catch (Exception e) {
+                        echo 'Tests failed! Sending failure email...'
+                        
+                        // Send email on failure
+                        emailext subject: "Jenkins Pipeline: Tests Failed",
+                            body: "Unit and integration tests failed. Please check the logs.",
+                            recipientProviders: [[$class: 'kavishchoudhary1935@gmail.com']]
+                        
+                        error "Failing the build due to test failure."
+                    }
+                }
             }
         }
 
