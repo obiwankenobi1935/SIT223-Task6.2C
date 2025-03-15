@@ -15,6 +15,7 @@ pipeline {
                 echo 'This stage runs unit and integration tests to verify code correctness.'
                 echo 'JUnit or TestNG is commonly used for Java applications.'
                 echo 'Jest or Mocha can be used for JavaScript-based projects.'
+                echo 'testing testing'
             }
         }
 
