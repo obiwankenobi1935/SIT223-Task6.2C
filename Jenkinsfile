@@ -8,7 +8,7 @@ pipeline {
                 echo 'For Java projects, Maven (mvn clean package) can be used.'
                 echo 'For JavaScript projects, npm or yarn can handle the build process.'
                 echo 'hello man'
-                echo 'something'
+                
             }
         }
 
