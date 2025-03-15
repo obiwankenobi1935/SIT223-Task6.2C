@@ -83,6 +83,7 @@ pipeline {
         always {
             echo 'This section can be used to send an email notification about pipeline execution status.'
             echo 'Jenkins Email Extension Plugin can be used to notify developers about success or failure.'
+            echo 'Deakin'
         }
     }
 }
