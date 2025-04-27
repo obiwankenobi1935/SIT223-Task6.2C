@@ -14,7 +14,7 @@ pipeline {
             steps {
                 script {
                     try {
-                        echo 'Running unit and integration tests...'
+                        echo 'Running unit and integration tests'
                         powershell 'echo "Running tests..." | Out-File -FilePath test_log.txt'
                         
                         echo 'Tests passed successfully.'
