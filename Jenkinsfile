@@ -22,7 +22,7 @@ pipeline {
                         // Send email on success with logs
                         emailext subject: "Jenkins Pipeline: Tests Passed",
                             body: "All unit and integration tests passed successfully.",
-                            to: "choudharykavish874@gmail.com",
+                            to: "kavishchoudhary193@gmail.com",
                             attachmentsPattern: "test_log.txt"
                     } catch (Exception e) {
                         echo 'Tests failed! Sending failure email...'
@@ -31,7 +31,7 @@ pipeline {
                         // Send email on failure with logs
                         emailext subject: "Jenkins Pipeline: Tests Failed",
                             body: "Unit and integration tests failed. Please check the logs.",
-                            to: "choudharykavish874@gmail.com",
+                            to: "kavishchoudhary1935@gmail.com",
                             attachmentsPattern: "test_log.txt"
                         
                         error "Failing the build due to test failure."
