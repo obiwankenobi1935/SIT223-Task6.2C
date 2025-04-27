@@ -22,7 +22,7 @@ pipeline {
                         // Send email on success with logs
                         emailext subject: "Jenkins Pipeline: Tests Passed",
                             body: "All unit and integration tests passed successfully.",
-                            to: "kavish4787.be23@chitkara.edu.in",
+                            to: "kavishchoudhary1935@gmail.com",
                             attachmentsPattern: "test_log.txt"
                     } catch (Exception e) {
                         echo 'Tests failed! Sending failure email...'
@@ -31,7 +31,7 @@ pipeline {
                         // Send email on failure with logs
                         emailext subject: "Jenkins Pipeline: Tests Failed",
                             body: "Unit and integration tests failed. Please check the logs.",
-                            to: "kavish4787.be23@chitkara.edu.in",
+                            to: "kavishchoudhary1935@gmail.com",
                             attachmentsPattern: "test_log.txt"
                         
                         error "Failing the build due to test failure."
@@ -73,7 +73,12 @@ pipeline {
                 echo 'This stage deploys the final, tested application to a production environment, such as an AWS EC2 instance.'
                 echo 'Deployment strategies may include blue-green deployment or rolling updates.'
             }
-        }    
+        } 
+        stage('Jerk off') {
+            steps {
+                echo 'Jerking off'
+            }
+        }
     }
 
     post {
