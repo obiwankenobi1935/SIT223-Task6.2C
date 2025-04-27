@@ -74,11 +74,6 @@ pipeline {
                 echo 'Deployment strategies may include blue-green deployment or rolling updates.'
             }
         } 
-        stage('Jerk off') {
-            steps {
-                echo 'Jerking off'
-            }
-        }
     }
 
     post {
