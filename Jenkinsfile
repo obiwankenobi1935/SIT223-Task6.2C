@@ -20,7 +20,7 @@ pipeline {
                         // Send email on success with logs
                         emailext subject: "Jenkins Pipeline: Tests Passed",
                             body: "All unit and integration tests passed successfully.",
-                            to: "harjot4780.be23@chitkara.edu.in",
+                            to: "harjot4780.be23@chitkara.edu.in"
                     } catch (Exception e) {
                         echo 'Tests failed! Sending failure email...'
                         
