@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'This stage compiles and packages the application using a build automation tool like Maven or Gradle.'
-                echo 'For Java projects, Maven (mvn clean package) can be used.'
+                echo 'For Java projects, Maven (mvn clean package) can be used.
             }
         }
 
