@@ -14,7 +14,6 @@ pipeline {
                 script {
                     try {
                         echo 'Running unit and integration tests'
-                        powershell 'echo "Running tests..." | Out-File -FilePath test.txt'
                         
                         echo 'Tests passed successfully.'
                         
@@ -22,16 +21,13 @@ pipeline {
                         emailext subject: "Jenkins Pipeline: Tests Passed",
                             body: "All unit and integration tests passed successfully.",
                             to: "harjot4780.be23@chitkara.edu.in",
-                            attachmentsPattern: "test.txt"
                     } catch (Exception e) {
                         echo 'Tests failed! Sending failure email...'
-                        powershell 'echo "Tests failed!" | Out-File -FilePath test_log.txt'
                         
                         // Send email on failure with logs
                         emailext subject: "Jenkins Pipeline: Tests Failed",
                             body: "Unit and integration tests failed. Please check the logs.",
                             to: "harjot4780.be23@chitkara.edu.in",
-                            attachmentsPattern: "test.txt"
                         
                         error "Failing the build due to test failure."
                     }
@@ -66,13 +62,6 @@ pipeline {
                 echo 'API testing tools like Postman or cURL can be used to verify functionality.'
             }
         }
-
-        stage('Deploy to Production') {
-            steps {
-                echo 'This stage deploys the final, tested application to a production environment, such as an AWS EC2 instance.'
-                echo 'Deployment strategies may include blue-green deployment or rolling updates.'
-            }
-        } 
     }
 
     post {
