@@ -6,8 +6,6 @@ pipeline {
             steps {
                 echo 'This stage compiles and packages the application using a build automation tool like Maven or Gradle.'
                 echo 'For Java projects, Maven (mvn clean package) can be used.'
-                echo 'For JavaScript projects, npm or yarn can handle the build process.'
-                echo 'hello'
             }
         }
 
@@ -16,15 +14,15 @@ pipeline {
                 script {
                     try {
                         echo 'Running unit and integration tests'
-                        powershell 'echo "Running tests..." | Out-File -FilePath test_log.txt'
+                        powershell 'echo "Running tests..." | Out-File -FilePath test.txt'
                         
                         echo 'Tests passed successfully.'
                         
                         // Send email on success with logs
                         emailext subject: "Jenkins Pipeline: Tests Passed",
                             body: "All unit and integration tests passed successfully.",
-                            to: "kavishchoudhary1935@gmail.com",
-                            attachmentsPattern: "test_log.txt"
+                            to: "harjot4780.be23@chitkara.edu.in",
+                            attachmentsPattern: "test.txt"
                     } catch (Exception e) {
                         echo 'Tests failed! Sending failure email...'
                         powershell 'echo "Tests failed!" | Out-File -FilePath test_log.txt'
@@ -32,8 +30,8 @@ pipeline {
                         // Send email on failure with logs
                         emailext subject: "Jenkins Pipeline: Tests Failed",
                             body: "Unit and integration tests failed. Please check the logs.",
-                            to: "kavishchoudhary1935@gmail.com",
-                            attachmentsPattern: "test_log.txt"
+                            to: "harjot4780.be23@chitkara.edu.in",
+                            attachmentsPattern: "test.txt"
                         
                         error "Failing the build due to test failure."
                     }
